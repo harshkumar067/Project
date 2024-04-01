@@ -32,7 +32,7 @@ def validate_password(password, username, last_passwords):
     
     return "Password is valid."
 
-# Test the function
+
 username = "user123"
 last_passwords = ["password1", "password2", "password3"]
 while True:
