@@ -1,27 +1,33 @@
 #include <iostream>
-#include <vector>
 
-bool checkPrime(int num) {
-    if (num <= 1) return false;
-    for (int i = 2; i * i <= num; i++) {
-        if (num % i == 0) return false;
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+
+    if (n % 2 == 0 || n % 3 == 0) return false;
+
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) return false;
     }
+
     return true;
 }
 
 int main() {
-    int totalPrimes;
-    std::cout << "Enter the total number of primes: ";
-    std::cin >> totalPrimes;
+    int N;
+    std::cin >> N;
 
-    int primeCount = 0;
-    for (int currentNum = 2; primeCount < totalPrimes; currentNum++) {
-        if (checkPrime(currentNum)) {
-            if (primeCount % 2 == 0) {
-                std::cout << currentNum << " ";
+    int count = 0;
+    int num = 2;
+    while (N > 0) {
+        if (isPrime(num)) {
+            count++;
+            if (count % 2 != 0) {
+                std::cout << num << " ";
+                N--;
             }
-            primeCount++;
         }
+        num++;
     }
 
     return 0;
